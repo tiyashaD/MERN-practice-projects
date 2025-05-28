@@ -9,7 +9,7 @@ connectDB();
 
 app.use(express.json());
 
-app.use("/api/routes", bookRoutes)
+app.use("/api/books", bookRoutes);
 
 app.listen (1000, () => {
     console.log("Server is listening on port 1000");
