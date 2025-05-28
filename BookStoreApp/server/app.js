@@ -7,6 +7,8 @@ const app = express();
 
 connectDB();
 
+app.use(express.json());
+
 app.use("/api/routes", bookRoutes)
 
 app.listen (1000, () => {
