@@ -2,7 +2,7 @@ import React from 'react'
 
 const Books = () => {
   return (
-    <div>Books</div>
+    <div className='bg-dark text-white' style={{ minHeight: "91.5vh" }}> Books</div>
   )
 }
 
