@@ -1,3 +1,9 @@
+.Home-Page{
+    width: 100%;
+    min-height: 91.5vh;
+    max-height: auto;
+}
+
 .viewBook{
   outline: none;
   border: 1px solid white;
@@ -5,4 +11,9 @@
   padding: 5px 20px 5px 20px;
   color: white;
   font-size: 20px;
+}
+
+.homeImg{
+    width: 450px;
+    height: 450px;
 }
