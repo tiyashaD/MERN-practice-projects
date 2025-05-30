@@ -6,30 +6,40 @@ const AddBooks = () => {
         <form className='container p-4'>
             <div className="form-group">
                 <label for="exampleFormControlInput1">Book Name: </label>
-                <input type="text" className="form-control my-3" id="exampleFormControlInput1" placeholder="Enter book name"/>
+                <input type="text" className="form-control my-2" id="exampleFormControlInput1" placeholder="Enter book name"/>
             </div>
 
             <div className="form-group">
                 <label for="exampleFormControlInput1">Description: </label>
-                <input type="text" className="form-control my-3" id="exampleFormControlInput1" placeholder="Enter book description"/>
+                <input type="text" className="form-control my-2" id="exampleFormControlInput1" placeholder="Enter book description"/>
             </div>
 
             <div className="form-group">
                 <label for="exampleFormControlInput1">Author: </label>
-                <input type="text" className="form-control my-3" id="exampleFormControlInput1" placeholder="Enter author name"/>
+                <input type="text" className="form-control my-2" id="exampleFormControlInput1" placeholder="Enter author name"/>
             </div>
 
             <div className="form-group">
                 <label for="exampleFormControlInput1">Image: </label>
-                <input type="text" className="form-control my-3" id="exampleFormControlInput1" placeholder="Enter image URL"/>
+                <input type="text" className="form-control my-2" id="exampleFormControlInput1" placeholder="Enter image URL"/>
             </div>
 
             <div className="form-group">
                 <label for="exampleFormControlInput1">Price: </label>
-                <input type="text" className="form-control my-3" id="exampleFormControlInput1" placeholder="Enter book price"/>
+                <input type="text" className="form-control my-2" id="exampleFormControlInput1" placeholder="Enter book price"/>
             </div>
 
-            <button className='btn btn-success'> Submit </button>  
+            <button className='btn my-2'
+                    style={{
+                        outline: "none", 
+                        border: "1px solid white", 
+                        backgroundColor: "transparent", 
+                        padding: "5px 10px", 
+                        color: "white", 
+                        fontSize: "15px",
+                        textDecoration: "none" 
+                    }}> 
+                    Submit </button>  
         </form>
 
         
