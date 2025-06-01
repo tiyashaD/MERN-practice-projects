@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import BooksSection from '../BooksSection';
 
-
 const Books = () => {
     const [books, setBooks] = useState([]);
     useEffect(() => {
