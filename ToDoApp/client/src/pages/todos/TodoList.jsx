@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from '../../components/Layout/Navbar'
 
 const TodoList = () => {
   return (
-    <div>TodoList</div>
+    <>
+      <Navbar/>
+      Hi from todolist page
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ const cors = require('cors');
 const connectDB = require("./config/db");
 
 //env config
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: './server/.env'});
 
 //calling mongoose function
 connectDB()
@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 //routes
 app.use('/api/v1/user', require('./routes/userRoute'));
-app.use('/api/v1/test', require('./routes/testRouter'));
+app.use('/api/v1/todo', require('./routes/todoRoute'));
 
 
 //port

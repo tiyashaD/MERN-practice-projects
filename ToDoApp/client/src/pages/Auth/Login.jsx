@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './authStyles.css';
+import AuthServices from '../../Services/AuthService';
+import toast from 'react-hot-toast';
+import { getErrorMessage } from '../../Utils/ErrorMessage';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   //login function
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     try {
       e.preventDefault();
-      alert('Login Data' + email + ' ' + password)
-    } catch (error) {
-      console.log(error);
-    }
+      const data = { email, password };
+      const res = await AuthServices.loginUser(data);
+      toast.success(res.data.message);
+      navigate("/home");
+      localStorage.setItem('todoapp', JSON.stringify(res.data));
+      console.log(res.data);
+    } catch (err) {
+      toast.error(getErrorMessage(err));
+      console.log(err);
+    } 
   }
 
   return (
@@ -40,4 +51,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

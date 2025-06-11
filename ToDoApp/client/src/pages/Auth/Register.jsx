@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './authStyles.css';
+import AuthServices from '../../Services/AuthService';
+import toast from 'react-hot-toast';
+import { getErrorMessage } from '../../Utils/ErrorMessage';
 
 
 const Register = () => {
@@ -8,13 +11,20 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   //login function
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     try {
       e.preventDefault();
-      alert('Login Data' + email + ' ' + password + ' ' + username)
-    } catch (error) {
-      console.log(error);
+      const data = { email, password, username };
+      const res = await AuthServices.registerUser(data);
+      toast.success(res.data.message);
+      navigate("/login");
+      console.log(res.data);
+    } catch (err) {
+      toast.error(getErrorMessage(err));
+      console.log(err);
     }
   }
   
