@@ -19,7 +19,6 @@
 
 .add-task button{
     width: 300px;
-
 }
 
 /* =================== CARD =============== */
@@ -41,4 +40,16 @@
     padding: 5px 10px;
     font-family: cursive;
     border-radius: 5px;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.card-container .card{
+  margin-left: 30px;
+  width: 15rem;
 }

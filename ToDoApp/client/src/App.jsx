@@ -4,8 +4,8 @@ import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import About from './pages/About/About';
 import TodoList from './pages/todos/TodoList';
-import { Toaster } from 'react-hot-toast';
 import HomePage from './pages/Home/HomePage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (

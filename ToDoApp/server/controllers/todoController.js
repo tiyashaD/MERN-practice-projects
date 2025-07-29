@@ -1,4 +1,5 @@
 const todoModel = require("../models/todoModels");
+
 // create new todo
 const createTodoController = async( req, res ) =>{
     try {
@@ -79,9 +80,9 @@ const deleteTodoController = async(req,res) => {
                 message:'No task found'
             })
         }
-        res.status(500).send({
+        res.status(200).send({
             success:true,
-            messsage:'Task deleted succeddfully'
+            message:'Task deleted successfully'
         })
     } catch (error) {
         console.log(error);

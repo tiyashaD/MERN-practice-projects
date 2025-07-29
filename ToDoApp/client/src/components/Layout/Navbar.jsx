@@ -4,9 +4,10 @@ import toast from 'react-hot-toast';
 
 const Navbar = () => {
 
-    const [ username, setUsername ] = useState('');
+    const [ username, setUsername ] = useState(''); // username variable and setUsername function to change value. Useful to display the logged-in user's name. 
     
     const navigate = useNavigate();
+    
     //logout function
     const logoutHandler = () => {
         localStorage.removeItem('todoapp');

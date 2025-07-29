@@ -35,7 +35,7 @@ const registerController = async( req, res ) => {
         console.log(error)
         res.status(500).send({
             success:false,
-            message:'Register API',
+            message:'Register API error',
             error
         })
     }
@@ -55,25 +55,27 @@ const loginController = async(req, res) => {
             })
         }
         //password verification
-        const isMatch = await bcrypt.compare(password, user.password)
-        if(!isMatch) {
-            return res.status(401).send({
-                success: false,
-                message: "Invalid credentials",
-            });
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          return res.status(401).send({
+            success: false,
+            message: "Invalid credentials",
+          });
         }
         //token
-        const token = await JWT.sign({id:user._id},process.env.JWT_SECRET, { expiresIn: "1d" })
+        const token = await JWT.sign({ id: user._id }, process.env.JWT_SECRET, {
+          expiresIn: "1d",
+        });
         res.status(200).send({
-            success:true,
-            message:'login successfully',
-            token,
-            user:{
-                id:user._id,
-                email:user.email,
-                username:user.username
-            }
-        })
+          success: true,
+          message: "login successfully",
+          token,
+          user: {
+            id: user._id,
+            email: user.email,
+            username: user.username,
+          },
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send({

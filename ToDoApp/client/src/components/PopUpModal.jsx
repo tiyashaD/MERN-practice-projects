@@ -9,6 +9,7 @@ export const PopUpModal = ({
   setDescription,
   showModal,
   setShowModal,
+  getUserTask
 }) => {
   //handle close button
   const handleClose = () => {
@@ -16,9 +17,10 @@ export const PopUpModal = ({
   };
 
   //handle sumbit function
-  const handleSubmit = async () => {
+  const handleCreate = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem("todoapp"));
+      
       const createdBy = userData && userData.user.id;
       const data = { title, description, createdBy };
 
@@ -27,6 +29,7 @@ export const PopUpModal = ({
       }
       const todo = await TodoServices.createTodo(data);
       setShowModal(false);
+      getUserTask();
       toast.success("Task created successfully");
       console.log(todo);
       setTitle("");
@@ -89,7 +92,7 @@ export const PopUpModal = ({
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={handleSubmit}
+                  onClick={handleCreate}
                 >
                   Create
                 </button>

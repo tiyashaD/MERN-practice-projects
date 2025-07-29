@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import TodoServices from "../Services/TodoServices";
 
-const EditTodoPopUp = ({ task, setShowModal }) => {
+const EditTodoPopUp = ({ task, setShowModal, getUserTask }) => {
   const [title, setTitle] = useState(task?.title);
   const [description, setDescription] = useState(task?.description);
   const [isCompleted, setIsCompleted] = useState(task?.isCompleted);
@@ -13,7 +13,7 @@ const EditTodoPopUp = ({ task, setShowModal }) => {
 
   const id = task?._id;
   // update task
-  const handleSubmit = async () => {
+  const handleUpdate = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem("todoapp"));
       const createdBy = userData && userData.user.id;
@@ -24,6 +24,7 @@ const EditTodoPopUp = ({ task, setShowModal }) => {
       }
       await TodoServices.updateTodo(id, data);
       setShowModal(false);
+      getUserTask();
       toast.success("Task updated successfully");
       setTitle("");
       setDescription("");
@@ -78,6 +79,7 @@ const EditTodoPopUp = ({ task, setShowModal }) => {
                   ></textarea>
                   <label htmlFor="floatingTextarea">Description</label>
                 </div>
+
                 <div className="my-3">
                     <select className="form-select" onChange={handleSelectChange}>
                         <option selected> Select status</option>
@@ -85,6 +87,7 @@ const EditTodoPopUp = ({ task, setShowModal }) => {
                         <option value={false}> Incomplete</option>
                     </select>
                 </div>
+                
               </div>
               <div className="modal-footer">
                 <button
@@ -97,7 +100,7 @@ const EditTodoPopUp = ({ task, setShowModal }) => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={handleSubmit}
+                  onClick={handleUpdate}
                 >
                   UPDATE
                 </button>
