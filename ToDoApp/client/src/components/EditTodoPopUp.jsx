@@ -36,7 +36,7 @@ const EditTodoPopUp = ({ task, setShowModal, getUserTask }) => {
 
   //function to select complete or incomplete
   const handleSelectChange = (e) => {
-    setIsCompleted(e.target.value);
+    setIsCompleted(e.target.value === "true");
   };
   return (
     <>

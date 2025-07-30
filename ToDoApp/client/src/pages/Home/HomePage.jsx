@@ -8,6 +8,7 @@ import Spinner from "../../components/Spinner";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,11 +18,22 @@ const HomePage = () => {
   const openModalHandler = () => {
     setShowModal(true);
   };
+
+  //handle search
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    let filterList =allTask?.filter((item) => item.title.toLowerCase().match(query.toLowerCase()));
+    setSearchQuery(query);
+    if(query && filterList.length > 0) {
+      setAllTask(filterList && filterList);
+    } else {
+      getUserTask(); 
+    }
+  }
   
   //get the user todos
   const userData = JSON.parse(localStorage.getItem("todoapp"));
     const id = userData && userData.user.id;
-    console.log(id);
     const getUserTask = async () => {
       //setLoading(true); //set to true jokhon task get korchi
       try {
@@ -45,7 +57,7 @@ const HomePage = () => {
       <div className="container">
         <div className="add-task">
           <h1>Your Task</h1>
-          <input type="search" placeholder="search your task" />
+          <input type="search" placeholder="search your task" value = {searchQuery} onChange={handleSearch}/>
           <button className="btn btn-primary" onClick={openModalHandler}>
             Create Task <i className="fa-solid fa-plus"></i>
           </button>
